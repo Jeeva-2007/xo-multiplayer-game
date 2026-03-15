@@ -116,7 +116,7 @@ function getWinningLine(board: Board): number[] | null {
 export default function GamePage() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const mode = searchParams.get("mode");
+  const mode = searchParams.get("mode") as "ai" | "online" | "offline" | null;
   const roomCode = searchParams.get("room");
   const difficulty = searchParams.get("difficulty") as "easy" | "medium" | "hard" | null;
 
