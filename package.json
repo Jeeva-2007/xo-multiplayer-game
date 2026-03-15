@@ -1,15 +1,34 @@
 {
-  "name": "xo-multiplayer",
+  "name": "xo-multiplayer-game",
   "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "cd client && npm run dev",
     "build": "cd client && npm run build",
-    "start": "cd client && npm run start"
+    "start": "cd client && npm run start",
+    "lint": "cd client && npm run lint"
   },
   "dependencies": {
+    "@react-three/drei": "^9.60.0",
+    "@react-three/fiber": "^8.13.0",
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.36.0",
     "next": "14.2.5",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "socket.io-client": "^4.7.2",
+    "three": "^0.183.2",
+    "zustand": "^5.0.11"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "autoprefixer": "^10",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "14.2.5",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.4",
+    "typescript": "^5"
   }
 }
