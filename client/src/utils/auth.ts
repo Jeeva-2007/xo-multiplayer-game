@@ -199,20 +199,22 @@ export function getUserStats(username: string): UserStats {
   
   // Check if stats are in old format (no total/ai/online/offline properties)
   if (!existingStats.total || !existingStats.ai) {
+    // Cast to any to access old format properties
+    const oldStats = existingStats as any;
     // Migrate old format to new format
     const migratedStats: UserStats = {
       username,
       total: {
-        wins: existingStats.wins || 0,
-        losses: existingStats.losses || 0,
-        draws: existingStats.draws || 0,
-        totalGames: existingStats.totalGames || 0
+        wins: oldStats.wins || 0,
+        losses: oldStats.losses || 0,
+        draws: oldStats.draws || 0,
+        totalGames: oldStats.totalGames || 0
       },
       ai: {
-        wins: existingStats.wins || 0,
-        losses: existingStats.losses || 0,
-        draws: existingStats.draws || 0,
-        totalGames: existingStats.totalGames || 0
+        wins: oldStats.wins || 0,
+        losses: oldStats.losses || 0,
+        draws: oldStats.draws || 0,
+        totalGames: oldStats.totalGames || 0
       },
       online: getEmptyDetailedStats(),
       offline: getEmptyDetailedStats()
