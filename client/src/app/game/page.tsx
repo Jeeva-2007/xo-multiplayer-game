@@ -1,8 +1,6 @@
 "use client";
 
-export const dynamic = "force-dynamic";
-
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { io, Socket } from "socket.io-client";
@@ -115,7 +113,7 @@ function getWinningLine(board: Board): number[] | null {
   return null;
 }
 
-export default function GamePage() {
+function GamePageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const mode = searchParams.get("mode") as "ai" | "online" | "offline" | null;
@@ -648,5 +646,13 @@ export default function GamePage() {
         </div>
       </motion.div>
     </div>
+  );
+}
+
+export default function GamePage() {
+  return (
+    <Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-black text-white">Loading...</div>}>
+      <GamePageContent />
+    </Suspense>
   );
 }
